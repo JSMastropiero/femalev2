@@ -26,7 +26,12 @@ SECRET_KEY = 'django-insecure-syo&l_xt9v%-r-4z+2^hdf3w#6h89f0%nr_g-uv5t25f(9f+8c
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['ec2-44-211-222-104.compute-1.amazonaws.com']
+ALLOWED_HOSTS = [
+    'ec2-44-211-222-104.compute-1.amazonaws.com',
+    'localhost/8000',
+    'localhost/4200',
+    
+]
 
 
 # Application definition
@@ -41,7 +46,7 @@ INSTALLED_APPS = [
     'core',
     'rest_framework',
     'rest_framework.authtoken',
-
+    'corsheaders',
 ]
 
 REST_FRAMEWORK = {
@@ -61,6 +66,7 @@ REST_FRAMEWORK = {
 
 
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -134,6 +140,20 @@ TIME_ZONE = 'UTC'
 USE_I18N = True
 
 USE_TZ = True
+
+CORS_ALLOWED_ORIGINS = [
+    'http://localhost:3000',
+    'http://localhost:8000',
+    'http://localhost:4200',
+    'ec2-44-211-222-104.compute-1.amazonaws.com'
+]
+
+CORS_ORIGIN_WHITELIST = [
+    'http://localhost:3000',
+    'http://localhost:8000',
+    'http://localhost:4200',
+    'ec2-44-211-222-104.compute-1.amazonaws.com'
+]
 
 
 # Static files (CSS, JavaScript, Images)
